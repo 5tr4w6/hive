@@ -1,3 +1,4 @@
+//zaidimo taisykles
 using System.Collections.Generic;
 
 public static class Rules
@@ -49,7 +50,7 @@ public static class Rules
 
 		return new List<Game_Manager.Coordinate>(valid);
 	}
-	//---hive rule (the structure has to be connected)
+	//hive'as negali buti susiskaides i daugiau nei viena dali
 	public static bool IsHiveConnected(
 		Dictionary<Game_Manager.Coordinate, Piece> board,
 		Game_Manager.Coordinate? excludeCoord = null)
@@ -60,7 +61,6 @@ public static class Rules
 
 		if (cells.Count == 0) return true;
 
-		// flood fill from first cell
 		var start = default(Game_Manager.Coordinate);
 		foreach (var c in cells) { start = c; break; }
 
@@ -85,7 +85,7 @@ public static class Rules
 		return visited.Count == cells.Count;
 	}
 
-	//---end game logic:
+	//zaidimo pabaigos logika
 	public enum GameResult { None, Player1Wins, Player2Wins, Draw }
 
 	public static GameResult CheckWinCondition(
@@ -109,8 +109,8 @@ public static class Rules
 		foreach (var neighbor in queenCoord.Neighbors())
 		{
 			if (!board.ContainsKey(neighbor))
-				return false; // at least one empty space, not surrounded
+				return false;
 		}
-		return true; // all 6 neighbors occupied
+		return true;
 	}
 }

@@ -5,6 +5,7 @@ public class Player
 {
 	public string Name { get; set; }
 
+	///info apie detales (kiekis, material, ar pastate karaliene, ar panaudojo spec. ability)
 	public int QueenCount { get; set; } = 1;
 	public int BeetleCount { get; set; } = 2;
 	public int SpiderCount { get; set; } = 2;

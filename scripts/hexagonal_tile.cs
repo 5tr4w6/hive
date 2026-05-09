@@ -40,6 +40,7 @@ public partial class hexagonal_tile : StaticBody3D
 		if (_mesh == null) return;
 		if (isPoisoned)
 		{
+			//gal reiktu pakeist i normalesni material, nes dabar negraziai atrodo
 			var poisonMaterial = new StandardMaterial3D();
 			poisonMaterial.AlbedoColor = new Color(0.0f, 0.8f, 0.0f);
 			_mesh.MaterialOverride = poisonMaterial;

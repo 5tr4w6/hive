@@ -1,3 +1,7 @@
+//cia pagr. zaidimo logika, kaip:
+//
+//zaideju vardai (kinda useless, nes zaidziama pries AI),
+//materials, cam setup, asines koordinaciu sistemos setup
 using Godot;
 using System.Collections.Generic;
 
@@ -46,6 +50,7 @@ public partial class Game_Manager : Node
 	public Coordinate? _p1QueenCoord = null;
 	public Coordinate? _p2QueenCoord = null;
 
+	//asines koordinaciu sistemos logika, remiantis https://www.redblobgames.com/grids/hexagons/
 	public struct Coordinate
 	{
 		public int Q, R;
@@ -73,11 +78,13 @@ public partial class Game_Manager : Node
 		}
 	}
 
+
 	public enum PieceType { None, Queen, Beetle, Spider, Ant, Grasshopper }
 	public PieceType SelectedPiece { get; set; } = PieceType.None;
 
 	public int GetCount(PieceType piece)
 	{
+		//switchas, kad nereiketu rasyti milijono if'u
 		return piece switch
 		{
 			PieceType.Queen => CurrentPlayer.QueenCount,
@@ -98,6 +105,7 @@ public partial class Game_Manager : Node
 
 	public override void _Ready()
 	{
+		//priskiriami visi material'ai
 		Player1.QueenMaterial = _p1QueenMat;
 		Player1.BeetleMaterial = _p1BeetleMat;
 		Player1.SpiderMaterial = _p1SpiderMat;
@@ -128,6 +136,7 @@ public partial class Game_Manager : Node
 		}
 	}
 
+	//panaikinam indikatoriu kur galima statyti detales
 	private void ClearValidPlacementTiles()
 	{
 		foreach (var tile in _validPlacementTiles)
@@ -135,6 +144,7 @@ public partial class Game_Manager : Node
 		_validPlacementTiles.Clear();
 	}
 
+	//padedam indikatorius, kur statyt detales
 	private void SpawnMovementIndicators(List<Coordinate> coords, Coordinate from)
 	{
 		ClearValidPlacementTiles();
@@ -148,6 +158,7 @@ public partial class Game_Manager : Node
 		}
 	}
 
+	//detaliu pastatymas
 	public void PlaceTile(Coordinate targetCoord)
 	{
 		Piece piece = SelectedPiece switch
@@ -264,7 +275,6 @@ public partial class Game_Manager : Node
 	{
 		if (_isAITurn) return;
 
-		// deselect any selected tile
 		if (_selectedTileNode != null)
 		{
 			_selectedTileNode.SetSelected(false);
@@ -327,8 +337,6 @@ public partial class Game_Manager : Node
 			GD.Print("This piece is stunned and cannot move!");
 			return;
 		}
-
-		// deselect previous tile
 		if (_selectedTileNode != null)
 			_selectedTileNode.SetSelected(false);
 
@@ -344,7 +352,6 @@ public partial class Game_Manager : Node
 			return;
 		}
 
-		// highlight selected tile
 		if (_tileNodes.TryGetValue(coord, out hexagonal_tile selectedTile))
 		{
 			_selectedTileNode = selectedTile;
@@ -373,12 +380,12 @@ public partial class Game_Manager : Node
 		if (CurrentPlayer == Player2)
 		{
 			_isAITurn = true;
-			_ui.UpdateUI(this); // update UI to show "AI thinking"
+			_ui.UpdateUI(this);
 			GetTree().CreateTimer(0.5f).Timeout += () =>
 			{
 				AI.TakeTurn(this);
 				_isAITurn = false;
-				_ui.UpdateUI(this); // update UI after AI done to re-enable buttons
+				_ui.UpdateUI(this);
 			};
 		}
 	}

@@ -1,23 +1,24 @@
 using System.Collections.Generic;
 
+//cia surasyta logika visoms detalems
 public abstract class Piece
 {
-	//---unikali operacija:
+	//unikali operacija (uznuodyti savo detale):
 	public bool IsPoisoned { get; set; } = false;
-	public bool IsStunned { get; set; } = false; // cannot move this turn
-																							 //---
+	public bool IsStunned { get; set; } = false;
 
 	public string Name { get; protected set; }
 	public Player Owner { get; protected set; }
 	public bool IsPlaced { get; set; } = false;
 
-	public Piece(Player owner) { Owner = owner; }
-	~Piece() { }
+	public Piece(Player owner) { Owner = owner; } //detales konstruktorius :)
+	~Piece() { }                                  //detales destruktorius :0 (C# jo nelabai reikia del garbage collectoriaus)
 
 	public abstract List<Game_Manager.Coordinate> GetValidMoves(
 			Game_Manager.Coordinate current,
 			Dictionary<Game_Manager.Coordinate, Piece> board);
 
+	//ar ejimas yra imanomas
 	protected bool IsSlideValid(
 			Game_Manager.Coordinate from,
 			Game_Manager.Coordinate to,

@@ -1,3 +1,4 @@
+//AI logika paremta tasku sistema - kuo daugiau tasku gauna, tuo didesnis sansas, kad butent ta ejima pasirinks
 using System.Collections.Generic;
 using Godot;
 
@@ -5,11 +6,10 @@ public static class AI
 {
 	public static void TakeTurn(Game_Manager gm)
 	{
-		// decide whether to place or move
 		bool canPlace = HasPiecesToPlace(gm.Player2);
 		bool canMove = gm.Player2.HasPlacedQueen;
 
-		// must place queen by 4th turn
+		//poer 4 ejima privalo pastatyti bite karaliene
 		if (gm.Player2.TurnsPlayed == 3 && !gm.Player2.HasPlacedQueen)
 		{
 			TakePlacementTurn(gm, forcedPiece: Game_Manager.PieceType.Queen);
@@ -18,7 +18,6 @@ public static class AI
 
 		if (!canPlace && !canMove) return;
 
-		// score both options and pick best
 		var (bestPlacePiece, bestPlaceCoord, placeScore) = canPlace
 				? ScoreBestPlacement(gm)
 				: (Game_Manager.PieceType.None, default, int.MinValue);
@@ -42,7 +41,7 @@ public static class AI
 					 player.GrasshopperCount > 0;
 	}
 
-	// ---placement scoring:
+	//tasku skaiciavimas statant detales
 	private static (Game_Manager.PieceType piece, Game_Manager.Coordinate coord, int score)
 			ScoreBestPlacement(Game_Manager gm)
 	{
@@ -75,7 +74,7 @@ public static class AI
 	{
 		int score = 0;
 
-		// bonus for placing next to opponent queen
+		//daugiau tasku statant pries zmogaus karalienes
 		if (gm._p1QueenCoord.HasValue)
 		{
 			foreach (var neighbor in coord.Neighbors())
@@ -88,16 +87,16 @@ public static class AI
 				}
 			}
 
-			// count how many neighbors opponent queen already has
+			//kiek kaimynu turi priesininkas
 			int queenNeighbors = CountOccupiedNeighbors(gm._board, gm._p1QueenCoord.Value);
 			score += queenNeighbors * 3;
 		}
 
-		// prefer placing ants and grasshoppers for mobility
+		//skruzdeles ir ziogai turi prioriteta, kadangi jie gali laisviau judeti
 		if (piece == Game_Manager.PieceType.Ant) score += 3;
 		if (piece == Game_Manager.PieceType.Grasshopper) score += 2;
 
-		// avoid placing next to own queen (leave it room to move)
+		//nestatyti prie savo karalienes, kad ji galetu pabegt
 		if (gm._p2QueenCoord.HasValue)
 		{
 			foreach (var neighbor in coord.Neighbors())
@@ -114,7 +113,7 @@ public static class AI
 		return score;
 	}
 
-	// ---movement scoring:
+	//tasku skaiciavimas judinant detales
 	private static (Game_Manager.Coordinate from, Game_Manager.Coordinate to, int score)
 			ScoreBestMove(Game_Manager gm)
 	{
@@ -126,12 +125,12 @@ public static class AI
 		{
 			if (kvp.Value.Owner != gm.Player2) continue;
 
-			// skip if moving this piece breaks hive
+			//nejudet jei suluzta hive'as (pazeidzia zaidimo taisykles)
 			if (!Rules.IsHiveConnected(gm._board, kvp.Key)) continue;
 
 			var moves = kvp.Value.GetValidMoves(kvp.Key, gm._board);
 
-			// filter occupied for non-beetles
+			//tikrinti kur jau yra detales, neskaitant beetlu (?)
 			if (kvp.Value is not Beetle)
 				moves.RemoveAll(c => gm._board.ContainsKey(c));
 
@@ -155,12 +154,12 @@ public static class AI
 	{
 		int score = 0;
 
-		// highest priority: surround opponent queen
+		//daugiausia tasku apsupinejant priesininko karaliene
 		if (gm._p1QueenCoord.HasValue)
 		{
 			int neighborsBefore = CountOccupiedNeighbors(gm._board, gm._p1QueenCoord.Value);
 
-			// simulate move
+			//simuliuoja judesi, kad ivertint ejima
 			var tempBoard = new Dictionary<Game_Manager.Coordinate, Piece>(gm._board);
 			tempBoard.Remove(from);
 			tempBoard[to] = piece;
@@ -168,7 +167,6 @@ public static class AI
 			int neighborsAfter = CountOccupiedNeighbors(tempBoard, gm._p1QueenCoord.Value);
 			score += (neighborsAfter - neighborsBefore) * 10;
 
-			// bonus for being adjacent to opponent queen
 			foreach (var neighbor in to.Neighbors())
 			{
 				if (neighbor.Q == gm._p1QueenCoord.Value.Q &&
@@ -180,13 +178,13 @@ public static class AI
 			}
 		}
 
-		// protect own queen if in danger
+		//reik saugot savo pacio kaili (savo karaliene)
 		if (gm._p2QueenCoord.HasValue)
 		{
 			int queenDanger = CountOccupiedNeighbors(gm._board, gm._p2QueenCoord.Value);
 			if (queenDanger >= 3)
 			{
-				// move pieces away from own queen to give it room
+				//patraukt savo detales nuo karalienes jei ji tuoj bus apsupta
 				foreach (var neighbor in from.Neighbors())
 				{
 					if (neighbor.Q == gm._p2QueenCoord.Value.Q &&
