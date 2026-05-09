@@ -1,0 +1,104 @@
+[gd_scene format=3 uid="uid://c5tegea44d516"]
+
+[ext_resource type="Script" uid="uid://b52w6alhh8nkg" path="res://scripts/DragCamera.cs" id="1_7yycs"]
+[ext_resource type="Material" uid="uid://02lh3cy3mrk6" path="res://materials/white/queenbee.tres" id="2_pb5dk"]
+[ext_resource type="Script" uid="uid://dobdgelw68ocy" path="res://scripts/Game_Manager.cs" id="2_spdx3"]
+[ext_resource type="PackedScene" uid="uid://dxes1k20035jv" path="res://scenes/UI.tscn" id="2_utl8k"]
+[ext_resource type="PackedScene" uid="uid://dghaexsif6xxf" path="res://scenes/pieces/QueenBee.tscn" id="3_4uomp"]
+[ext_resource type="Material" uid="uid://b6mp5iovyycpj" path="res://materials/white/beetle.tres" id="3_7yycs"]
+[ext_resource type="PackedScene" uid="uid://bel3vn5lajhhk" path="res://assets/extra/Hexagon Piece.tscn" id="3_xwrrd"]
+[ext_resource type="PackedScene" uid="uid://cnreicb6k62p" path="res://scenes/pieces/Beetle.tscn" id="4_sxdnt"]
+[ext_resource type="Material" uid="uid://c1174y5mytr5i" path="res://materials/white/spider.tres" id="4_t5cek"]
+[ext_resource type="Material" uid="uid://c7cj1cwyhy6yh" path="res://materials/white/soldierant.tres" id="5_02plu"]
+[ext_resource type="PackedScene" uid="uid://bdsuy31hg64bx" path="res://scenes/pieces/Spider.tscn" id="5_bxsth"]
+[ext_resource type="PackedScene" uid="uid://ck7fuidqim2kn" path="res://scenes/pieces/Soldier Ant.tscn" id="6_awxuf"]
+[ext_resource type="Material" uid="uid://bu08phfleta67" path="res://materials/white/grasshopper.tres" id="6_cnerc"]
+[ext_resource type="PackedScene" uid="uid://5m2fx4qb26kc" path="res://scenes/pieces/Grasshopper.tscn" id="7_ivdfd"]
+[ext_resource type="Material" uid="uid://bvs4nr7naiye5" path="res://materials/black/queenbee.tres" id="7_lupn6"]
+[ext_resource type="Material" uid="uid://bq8u7oat77gba" path="res://materials/black/beetle.tres" id="8_rp376"]
+[ext_resource type="Material" uid="uid://b4ia1vsekxmo0" path="res://materials/black/spider.tres" id="9_v7lwh"]
+[ext_resource type="Material" uid="uid://dem77qbawaipo" path="res://materials/black/soldierant.tres" id="10_lyjk8"]
+[ext_resource type="Material" uid="uid://bpmwssg4getve" path="res://materials/black/grasshopper.tres" id="11_csay3"]
+
+[node name="Node3D" type="Node3D" unique_id=2119752002]
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=2050927406]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0.4380964, 0)
+fov = 120.0
+script = ExtResource("1_7yycs")
+DragSpeed = 0.1
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=809639512]
+transform = Transform3D(1, 0, 0, 0, 0.80001986, 0.5999735, 0, -0.5999735, 0.80001986, 0, 0, 0)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=697214407]
+
+[node name="Game Manager" type="Node" parent="." unique_id=1592073530 node_paths=PackedStringArray("_ui", "_cam")]
+script = ExtResource("2_spdx3")
+_ui = NodePath("../UI")
+_p1QueenMat = ExtResource("2_pb5dk")
+_p1BeetleMat = ExtResource("3_7yycs")
+_p1SpiderMat = ExtResource("4_t5cek")
+_p1AntMat = ExtResource("5_02plu")
+_p1GrasshopperMat = ExtResource("6_cnerc")
+_p2QueenMat = ExtResource("7_lupn6")
+_p2BeetleMat = ExtResource("8_rp376")
+_p2SpiderMat = ExtResource("9_v7lwh")
+_p2AntMat = ExtResource("10_lyjk8")
+_p2GrasshopperMat = ExtResource("11_csay3")
+_placementIndicatorScene = ExtResource("3_xwrrd")
+_queenScene = ExtResource("3_4uomp")
+_beetleScene = ExtResource("4_sxdnt")
+_spiderScene = ExtResource("5_bxsth")
+_antScene = ExtResource("6_awxuf")
+_grasshopperScene = ExtResource("7_ivdfd")
+_cam = NodePath("../Camera3D")
+
+[node name="UI" parent="." unique_id=1301826606 node_paths=PackedStringArray("_gm", "TurnLabel", "QueenButton", "BeetleButton", "SpiderButton", "AntButton", "GrasshopperButton", "PoisonButton", "GameOverPanel", "GameOverLabel") instance=ExtResource("2_utl8k")]
+offset_left = 969.64
+offset_right = -73.76001
+_gm = NodePath("../Game Manager")
+TurnLabel = NodePath("Panel/Turn label")
+QueenButton = NodePath("Button")
+BeetleButton = NodePath("Button2")
+SpiderButton = NodePath("Button3")
+AntButton = NodePath("Button4")
+GrasshopperButton = NodePath("Button5")
+PoisonButton = NodePath("PoisonButton")
+GameOverPanel = NodePath("GameOverPanel")
+GameOverLabel = NodePath("GameOverPanel/Label")
+
+[node name="GameOverPanel" type="Panel" parent="UI" unique_id=1339294811]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -2.8497095
+anchor_top = 0.10027159
+anchor_right = -0.01097263
+anchor_bottom = 0.7634966
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="UI/GameOverPanel" unique_id=1292912806]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -11.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Game over"
+horizontal_alignment = 1
+
+[node name="PoisonButton" type="Button" parent="UI" unique_id=1062204680]
+layout_mode = 0
+offset_left = 59.359985
+offset_top = 572.0
+offset_right = 119.359985
+offset_bottom = 603.0
+text = "Poison"
+
+[editable path="UI"]

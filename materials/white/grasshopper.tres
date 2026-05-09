@@ -1,0 +1,6 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://bu08phfleta67"]
+
+[ext_resource type="Texture2D" uid="uid://dae0ksrukaw6t" path="res://assets/textures/whitegrasshopper_grasshopper.png" id="1_nvxsd"]
+
+[resource]
+albedo_texture = ExtResource("1_nvxsd")

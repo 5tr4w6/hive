@@ -1,0 +1,60 @@
+[gd_scene format=4 uid="uid://bdsuy31hg64bx"]
+
+[ext_resource type="Script" uid="uid://dqxgqrwmep3gy" path="res://scripts/hexagonal_tile.cs" id="1_g08sn"]
+[ext_resource type="Texture2D" uid="uid://kx7e0rea3ib0" path="res://assets/textures/whitespider.png" id="2_k4w0o"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dtu8i"]
+albedo_texture = ExtResource("2_k4w0o")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_akfat"]
+resource_name = "Material.001"
+cull_mode = 2
+roughness = 0.5
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_acnaa"]
+_surfaces = [{
+"aabb": AABB(-1.2859496, -0.0006020218, -1.1139016, 2.5718992, 0.501204, 2.2278032),
+"format": 34896613377,
+"index_count": 60,
+"index_data": PackedByteArray("AAABAAIAAAADAAEAAwAEAAEABAACAAEAAAAFAAMAAwAFAAQABgAAAAIABQAHAAQABgACAAgABQAJAAcACgAAAAYABQAAAAoACgAGAAgABQAKAAkABAALAAIAAgALAAgACwAEAAcACgAIAAsACQALAAcACQAKAAsA"),
+"name": "Material.001",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 12,
+"vertex_data": PackedByteArray("gr8lBv//AAB8QNn5//8AAIK//////wAAfEAAAP//AAAAANn5/38AAAAAAAD/fwAA//8lBv9/AAB8QNn5AAAAAP//////fwAAfEAAAAAAAACCvyUGAAAAAIK///8AAAAA")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_jc63p"]
+resource_name = "whitegrasshopper_Cube_001"
+_surfaces = [{
+"aabb": AABB(-1.2859496, -0.0006020218, -1.1139016, 2.5718992, 0.501204, 2.2278032),
+"attribute_data": PackedByteArray("kZ0V6XSav+aUnbPmcZog6YudKOnVo4Lrjp2K69KjIOnSoyDp9aaN69Wjguvypizp16Md6ZSds+bao7vmkZ0V6cW0kd5Kqn/Y0q2R3sW0bdJNuH/Y0q1t0vKmIOnao7vm9aa/5tejHelxmizpjp2K63SajeuLnSjpZL9UETwA/3+aQFQRZL+q7sL//3+aQKru"),
+"format": 34896613399,
+"index_count": 60,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0AEAARABIAEQAQABMAEwAQABQAEQATABUAFgAXABgAFgAZABcAGgAbABwAGgAdABsAHgAfACAAHwAeACEAIQAeACIAHwAhACMA"),
+"material": SubResource("StandardMaterial3D_akfat"),
+"name": "Material.001",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 36,
+"vertex_data": PackedByteArray("gr8lBv//F4B8QNn5//8XgIK//////xeAfEAAAP//F4AAAAAA/3/m/3xA2fkAAOb/AADZ+f9/5v98QAAAAADm/3xAAAAAAP//gr///wAA//98QNn5AAD//4K/JQYAAP////8lBv9/iKqCv/////+Iqv//////f4iqgr8lBv//iKqCvyUG////PwAAAAD/f/8/fEAAAP///z+CvyUGAAD/P///JQb/f/8/fEAAAAAA/z+CvyUGAAB21f//////f3bVgr///wAAdtX//yUG/3921XxAAAD//+r/AADZ+f9/6v98QNn5///q/wAAAAD/f+r/gr///wAA/78AANn5/3//v3xA2fkAAP+/gr///////7///////3//v3xA2fn///+//////////////////////87/267O/9uuzv/brs7/267Y/yaA2P8mgNj/JoDY/yaALn9MAC5/TAAuf0wALn9MAGYAMn9mADJ/ZgAyf2YAMn9mADJ/ZgAyf8N/JQDDfyUAw38lAMN/JQDw/0bR8f9G0fH/RtHx/0bRmP/MgJj/zICY/8yAmP/MgJj/zICY/8yA")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_acnaa")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3ouog"]
+size = Vector3(1.2405396, 0.50683594, 2.2198486)
+
+[node name="Spider" type="StaticBody3D" unique_id=1448596756]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+script = ExtResource("1_g08sn")
+
+[node name="Hexagonal_Tile" type="MeshInstance3D" parent="." unique_id=1090072652]
+material_override = SubResource("StandardMaterial3D_dtu8i")
+mesh = SubResource("ArrayMesh_jc63p")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=656555010]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.013214111, 0.24658203, 0.0064086914)
+shape = SubResource("BoxShape3D_3ouog")
+debug_color = Color(0, 0.6, 0.69803923, 1)

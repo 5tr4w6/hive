@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://cnreicb6k62p"]
+
+[ext_resource type="Script" uid="uid://dqxgqrwmep3gy" path="res://scripts/hexagonal_tile.cs" id="1_x4e1y"]
+[ext_resource type="PackedScene" uid="uid://hcw42kkiw20b" path="res://assets/extra/gooduvmesh.tscn" id="2_tq67y"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3ouog"]
+size = Vector3(1.2405396, 0.50683594, 2.2198486)
+
+[node name="Beetle" type="StaticBody3D" unique_id=1448596756]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+script = ExtResource("1_x4e1y")
+
+[node name="Hexagonal_Tile" parent="." unique_id=1867663716 instance=ExtResource("2_tq67y")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=656555010]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.013214111, 0.24658203, 0.0064086914)
+shape = SubResource("BoxShape3D_3ouog")
+debug_color = Color(0, 0.6, 0.69803923, 1)

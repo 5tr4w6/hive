@@ -1,0 +1,97 @@
+[gd_scene format=3 uid="uid://dxes1k20035jv"]
+
+[ext_resource type="Script" uid="uid://ct5733gny0xqc" path="res://scripts/UI.cs" id="1_dj8aq"]
+
+[node name="UI" type="Control" unique_id=1301826606]
+layout_direction = 1
+layout_mode = 3
+anchor_left = -0.07
+anchor_right = 1.0
+anchor_bottom = 1.0020001
+offset_left = 1032.64
+offset_top = 3.0
+offset_right = -10.76001
+offset_bottom = -0.29608154
+script = ExtResource("1_dj8aq")
+
+[node name="Panel" type="Panel" parent="." unique_id=92409467]
+layout_mode = 0
+offset_top = 15.0
+offset_right = 181.0
+offset_bottom = 622.0
+
+[node name="Label" type="Label" parent="Panel" unique_id=1405442002]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_top = 2.0
+offset_right = 3.7600098
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+text = "Pieces"
+horizontal_alignment = 1
+
+[node name="Turn label" type="Label" parent="Panel" unique_id=1248995862]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.027
+anchor_right = 1.0
+anchor_bottom = 0.245
+offset_top = 10.395
+offset_bottom = 456.285
+text = "..."
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="." unique_id=1022378089]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.042274363
+anchor_top = 0.19349845
+anchor_right = 0.38046926
+anchor_bottom = 0.29256967
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Button2" type="Button" parent="." unique_id=468145478]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.042274363
+anchor_top = 0.31733748
+anchor_right = 0.38046926
+anchor_bottom = 0.41640866
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Button3" type="Button" parent="." unique_id=907612121]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.042274363
+anchor_top = 0.44117647
+anchor_right = 0.38046926
+anchor_bottom = 0.5402477
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Button4" type="Button" parent="." unique_id=193867371]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.042274363
+anchor_top = 0.5650155
+anchor_right = 0.38046926
+anchor_bottom = 0.6640867
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Button5" type="Button" parent="." unique_id=296944634]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.042274363
+anchor_top = 0.6888545
+anchor_right = 0.38046926
+anchor_bottom = 0.7879257
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
