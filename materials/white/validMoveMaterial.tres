@@ -4,4 +4,4 @@
 transparency = 4
 cull_mode = 2
 depth_draw_mode = 1
-albedo_color = Color(0.32156864, 0.60784316, 0, 0.20392157)
+albedo_color = Color(0.5882353, 0.8235294, 0, 0.2627451)

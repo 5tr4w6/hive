@@ -228,7 +228,7 @@ public partial class Game_Manager : Node
 			if (piece is Beetle && isClimbing)
 			{
 				if (_tileNodes.TryGetValue(to, out hexagonal_tile tileBelow))
-					worldPos.Y = tileBelow.GlobalPosition.Y + 0.2f;
+					worldPos.Y = 0.05f;//beetle'as gali uzlipti and detales ir stabdyti jos ejima (ji tampa nebepasiekiama)
 			}
 			tile.GlobalPosition = worldPos;
 			tile.Init(this, to);
@@ -274,6 +274,8 @@ public partial class Game_Manager : Node
 	public void OnPieceSelected(PieceType piece)
 	{
 		if (_isAITurn) return;
+
+
 
 		if (_selectedTileNode != null)
 		{
@@ -335,6 +337,11 @@ public partial class Game_Manager : Node
 		if (piece.IsStunned)
 		{
 			GD.Print("This piece is stunned and cannot move!");
+			return;
+		}
+		if (piece.IsPoisoned)
+		{
+			GD.Print("This piece is poisoned and cannot move!");
 			return;
 		}
 		if (_selectedTileNode != null)
@@ -401,6 +408,7 @@ public partial class Game_Manager : Node
 		};
 		GD.Print(message);
 		_ui.ShowGameOver(message);
+		ProcessMode = ProcessModeEnum.Disabled;//stop ability to make moves when game over
 	}
 
 	private PackedScene GetSceneForPiece(PieceType piece)
