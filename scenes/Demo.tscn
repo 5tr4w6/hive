@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://b52w6alhh8nkg" path="res://scripts/DragCamera.cs" id="1_7yycs"]
 [ext_resource type="Material" uid="uid://02lh3cy3mrk6" path="res://materials/white/queenbee.tres" id="2_pb5dk"]
 [ext_resource type="Script" uid="uid://dobdgelw68ocy" path="res://scripts/Game_Manager.cs" id="2_spdx3"]
-[ext_resource type="PackedScene" uid="uid://dxes1k20035jv" path="res://scenes/UI.tscn" id="2_utl8k"]
 [ext_resource type="PackedScene" uid="uid://dghaexsif6xxf" path="res://scenes/pieces/QueenBee.tscn" id="3_4uomp"]
 [ext_resource type="Material" uid="uid://b6mp5iovyycpj" path="res://materials/white/beetle.tres" id="3_7yycs"]
 [ext_resource type="PackedScene" uid="uid://bel3vn5lajhhk" path="res://assets/extra/Hexagon Piece.tscn" id="3_xwrrd"]
@@ -19,17 +18,152 @@
 [ext_resource type="Material" uid="uid://b4ia1vsekxmo0" path="res://materials/black/spider.tres" id="9_v7lwh"]
 [ext_resource type="Material" uid="uid://dem77qbawaipo" path="res://materials/black/soldierant.tres" id="10_lyjk8"]
 [ext_resource type="Material" uid="uid://bpmwssg4getve" path="res://materials/black/grasshopper.tres" id="11_csay3"]
+[ext_resource type="Script" uid="uid://ct5733gny0xqc" path="res://scripts/UI.cs" id="19_7yycs"]
+
+[sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_7yycs"]
+ground_color = Color(0.37702903, 0.23134032, 0.11585351, 1)
+
+[sub_resource type="Sky" id="Sky_t5cek"]
+sky_material = SubResource("PhysicalSkyMaterial_7yycs")
+
+[sub_resource type="Environment" id="Environment_02plu"]
+background_mode = 2
+sky = SubResource("Sky_t5cek")
+ambient_light_color = Color(0.25073364, 0.61299634, 0.6881089, 1)
+
+[sub_resource type="Theme" id="Theme_7yycs"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v7lwh"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0.26666668, 0.11764706, 0.11764706, 0.5764706)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="Theme" id="Theme_t5cek"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rp376"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.3882353, 0.1882353, 0.1882353, 0.39215687)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7yycs"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.38857287, 0.1897483, 0.1897483, 0.393)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t5cek"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.3882353, 0.1882353, 0.1882353, 0.39215687)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_02plu"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.3882353, 0.1882353, 0.1882353, 0.39215687)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cnerc"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.3882353, 0.1882353, 0.1882353, 0.39215687)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lupn6"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.3882353, 0.1882353, 0.1882353, 0.39215687)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lyjk8"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0.26666668, 0.11764706, 0.11764706, 0.5764706)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_csay3"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0.008202022, 0.008202025, 0.008202025, 0.6)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
 
 [node name="Node3D" type="Node3D" unique_id=2119752002]
 
-[node name="Camera3D" type="Camera3D" parent="." unique_id=2050927406]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0.4380964, 0)
-fov = 120.0
-script = ExtResource("1_7yycs")
-DragSpeed = 0.1
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=555322289]
+environment = SubResource("Environment_02plu")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=809639512]
 transform = Transform3D(1, 0, 0, 0, 0.80001986, 0.5999735, 0, -0.5999735, 0.80001986, 0, 0, 0)
+light_color = Color(1, 0.96147376, 0.8849451, 1)
+light_energy = 2.0
+light_specular = 0.5
+directional_shadow_mode = 0
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=2050927406]
+transform = Transform3D(1, 0, 0, 0, 0.34202012, 0.93969256, 0, -0.93969256, 0.34202012, 0, 0.4380964, 0)
+projection = 1
+fov = 120.0
+script = ExtResource("1_7yycs")
+DragSpeed = 0.1
+ZoomSpeed = 0.2
+ZoomMin = 1.0
+ZoomMax = 2.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=697214407]
 
@@ -54,51 +188,217 @@ _antScene = ExtResource("6_awxuf")
 _grasshopperScene = ExtResource("7_ivdfd")
 _cam = NodePath("../Camera3D")
 
-[node name="UI" parent="." unique_id=1301826606 node_paths=PackedStringArray("_gm", "TurnLabel", "QueenButton", "BeetleButton", "SpiderButton", "AntButton", "GrasshopperButton", "PoisonButton", "GameOverPanel", "GameOverLabel") instance=ExtResource("2_utl8k")]
-offset_left = 969.64
-offset_right = -73.76001
+[node name="UI" type="Control" parent="." unique_id=1301826606 node_paths=PackedStringArray("_gm", "TurnLabel", "QueenButton", "BeetleButton", "SpiderButton", "AntButton", "GrasshopperButton", "PoisonButton", "GameOverPanel", "GameOverLabel")]
+layout_direction = 1
+layout_mode = 3
+anchor_left = -0.07
+anchor_right = 1.0
+anchor_bottom = 1.0020001
+offset_left = 1095.0
+offset_top = 6.0
+offset_right = -2.0
+offset_bottom = -0.29608154
+grow_vertical = 2
+size_flags_horizontal = 0
+script = ExtResource("19_7yycs")
 _gm = NodePath("../Game Manager")
 TurnLabel = NodePath("Panel/Turn label")
-QueenButton = NodePath("Button")
-BeetleButton = NodePath("Button2")
-SpiderButton = NodePath("Button3")
-AntButton = NodePath("Button4")
-GrasshopperButton = NodePath("Button5")
-PoisonButton = NodePath("PoisonButton")
-GameOverPanel = NodePath("GameOverPanel")
-GameOverLabel = NodePath("GameOverPanel/Label")
+QueenButton = NodePath("Panel/Button")
+BeetleButton = NodePath("Panel/Button2")
+SpiderButton = NodePath("Panel/Button3")
+AntButton = NodePath("Panel/Button4")
+GrasshopperButton = NodePath("Panel/Button5")
+PoisonButton = NodePath("Panel/PoisonButton")
+GameOverPanel = NodePath("../Game over UI stuff/GameOverPanel")
+GameOverLabel = NodePath("../Game over UI stuff/GameOverPanel/Label")
 
-[node name="GameOverPanel" type="Panel" parent="UI" unique_id=1339294811]
-visible = false
+[node name="Panel" type="Panel" parent="UI" unique_id=92409467]
 layout_mode = 1
-anchors_preset = -1
-anchor_left = -2.8497095
-anchor_top = 0.10027159
-anchor_right = -0.01097263
-anchor_bottom = 0.7634966
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -181.0
+offset_top = -303.5
+offset_bottom = 303.5
+grow_horizontal = 0
+grow_vertical = 2
+theme = SubResource("Theme_7yycs")
+theme_override_styles/panel = SubResource("StyleBoxFlat_v7lwh")
+
+[node name="Label" type="Label" parent="UI/Panel" unique_id=1405442002]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_top = 2.0
+offset_right = 3.7600098
+offset_bottom = 2.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(1, 0.9764706, 0.7294118, 1)
+text = "Pieces"
+horizontal_alignment = 1
+
+[node name="Turn label" type="Label" parent="UI/Panel" unique_id=1248995862]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.027
+anchor_right = 1.0
+anchor_bottom = 0.245
+offset_top = 10.395
+offset_bottom = 456.285
+theme_override_colors/font_color = Color(1, 0.9764706, 0.7294118, 1)
+text = "..."
+horizontal_alignment = 1
+
+[node name="PoisonButton" type="Button" parent="UI/Panel" unique_id=1062204680]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -88.0
+offset_top = -62.0
+offset_right = 88.0
+offset_bottom = -4.052002
+grow_horizontal = 2
+grow_vertical = 0
+theme = SubResource("Theme_t5cek")
+theme_override_colors/font_color = Color(1, 0.9764706, 0.7294118, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_rp376")
+text = "Poison"
+
+[node name="Button" type="Button" parent="UI/Panel" unique_id=1022378089]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.042274363
+anchor_top = 0.19349845
+anchor_right = 0.38046926
+anchor_bottom = 0.29256967
+offset_left = 2.5195436
+offset_top = 2.6284866
+offset_right = 2.5195389
+offset_bottom = 2.628479
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 0.9764706, 0.7294118, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_7yycs")
 metadata/_edit_use_anchors_ = true
 
-[node name="Label" type="Label" parent="UI/GameOverPanel" unique_id=1292912806]
+[node name="Button2" type="Button" parent="UI/Panel" unique_id=468145478]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.042274363
+anchor_top = 0.31733748
+anchor_right = 0.38046926
+anchor_bottom = 0.41640866
+offset_left = 2.5195436
+offset_top = 13.910706
+offset_right = 2.5195389
+offset_bottom = 13.910721
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 0.9764706, 0.7294118, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_t5cek")
+metadata/_edit_use_anchors_ = true
+
+[node name="Button3" type="Button" parent="UI/Panel" unique_id=907612121]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.042274363
+anchor_top = 0.44117647
+anchor_right = 0.38046926
+anchor_bottom = 0.5402477
+offset_left = 2.5195436
+offset_top = 25.192932
+offset_right = 2.5195389
+offset_bottom = 25.192932
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 0.9764706, 0.7294118, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_02plu")
+metadata/_edit_use_anchors_ = true
+
+[node name="Button4" type="Button" parent="UI/Panel" unique_id=193867371]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.042274363
+anchor_top = 0.5650155
+anchor_right = 0.38046926
+anchor_bottom = 0.6640867
+offset_left = 2.5195436
+offset_top = 36.47516
+offset_right = 2.5195389
+offset_bottom = 36.47516
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 0.9764706, 0.7294118, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_cnerc")
+metadata/_edit_use_anchors_ = true
+
+[node name="Button5" type="Button" parent="UI/Panel" unique_id=296944634]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.042274363
+anchor_top = 0.6888545
+anchor_right = 0.38046926
+anchor_bottom = 0.7879257
+offset_left = 2.5195436
+offset_top = 47.757385
+offset_right = 2.5195389
+offset_bottom = 47.757416
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 0.9764706, 0.7294118, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_lupn6")
+metadata/_edit_use_anchors_ = true
+
+[node name="Game over UI stuff" type="Control" parent="." unique_id=1602631028]
+layout_mode = 3
+anchor_right = 1.0
+anchor_bottom = 0.057000004
+offset_right = -2.0
+offset_bottom = 0.099998474
+
+[node name="GameOverPanel" type="Panel" parent="Game over UI stuff" unique_id=1339294811]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -96.0
+offset_top = -14.0
+offset_right = 96.0
+offset_bottom = 14.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_lyjk8")
+
+[node name="Label" type="Label" parent="Game over UI stuff/GameOverPanel" unique_id=1292912806]
 layout_mode = 1
 anchors_preset = 14
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_top = -11.5
-offset_bottom = 11.5
+offset_top = -14.0
+offset_bottom = 14.349594
 grow_horizontal = 2
 grow_vertical = 2
-text = "Game over"
+theme_override_colors/font_color = Color(1, 0.9764706, 0.7294118, 1)
+text = "GAME OVER...."
 horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="PoisonButton" type="Button" parent="UI" unique_id=1062204680]
-layout_mode = 0
-offset_left = 26.359985
-offset_top = 571.0
-offset_right = 160.35999
-offset_bottom = 602.0
-text = "Poison"
-
-[editable path="UI"]
+[node name="Panel" type="Panel" parent="Game over UI stuff/GameOverPanel" unique_id=1555138062]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -2.63
+anchor_right = 3.63
+anchor_bottom = 24.857
+offset_left = -133.03998
+offset_top = -89.0
+offset_right = 91.03998
+offset_bottom = 111.00397
+theme_override_styles/panel = SubResource("StyleBoxFlat_csay3")

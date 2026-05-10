@@ -4,6 +4,9 @@ public partial class DragCamera : Camera3D
 {
 	[Export] public MouseButton DragButton = MouseButton.Middle;
 	[Export] public float DragSpeed = 1.0f;
+	[Export] public float ZoomSpeed = 1.0f;
+	[Export] public float ZoomMin = 5.0f;
+	[Export] public float ZoomMax = 40.0f;
 
 	private bool _dragging = false;
 	private Vector2 _dragStartMouse;
@@ -11,17 +14,28 @@ public partial class DragCamera : Camera3D
 
 	public override void _UnhandledInput(InputEvent @event)
 	{
-		if (@event is InputEventMouseButton mb && mb.ButtonIndex == DragButton)
+		if (@event is InputEventMouseButton mb)
 		{
-			if (mb.Pressed)
+			switch (mb.ButtonIndex)
 			{
-				_dragging = true;
-				_dragStartMouse = mb.Position;
-				_dragStartPosition = Position;
-			}
-			else
-			{
-				_dragging = false;
+				case MouseButton.WheelUp:
+					Size = Mathf.Clamp(Size - ZoomSpeed, ZoomMin, ZoomMax);
+					break;
+				case MouseButton.WheelDown:
+					Size = Mathf.Clamp(Size + ZoomSpeed, ZoomMin, ZoomMax);
+					break;
+				case var btn when btn == DragButton:
+					if (mb.Pressed)
+					{
+						_dragging = true;
+						_dragStartMouse = mb.Position;
+						_dragStartPosition = Position;
+					}
+					else
+					{
+						_dragging = false;
+					}
+					break;
 			}
 		}
 	}
@@ -31,8 +45,6 @@ public partial class DragCamera : Camera3D
 		if (!_dragging) return;
 
 		Vector2 mouseDelta = GetViewport().GetMousePosition() - _dragStartMouse;
-
-		float zoom = Size;
 
 		Position = _dragStartPosition + new Vector3(
 				-mouseDelta.X * DragSpeed * 0.01f,

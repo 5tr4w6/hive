@@ -11,6 +11,7 @@ public partial class UI : Control
 	[Export] public Button AntButton { get; set; }
 	[Export] public Button GrasshopperButton { get; set; }
 	[Export] public Button PoisonButton { get; set; }
+
 	[Export] public Panel GameOverPanel { get; set; }
 	[Export] public Label GameOverLabel { get; set; }
 
@@ -43,7 +44,7 @@ public partial class UI : Control
 		GrasshopperButton.Disabled = gm.CurrentPlayer.GrasshopperCount <= 0;
 
 		PoisonButton.Visible = !gm.CurrentPlayer.PoisonUsed;
-		PoisonButton.Text = gm._poisonMode ? "Click a piece to poison!" : "Use Poison";
+		PoisonButton.Text = gm._poisonMode ? "Click a piece activate" : "Use Poison";
 	}
 
 	public void ShowGameOver(string message)
