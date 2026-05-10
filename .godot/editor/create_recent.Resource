@@ -1,3 +1,0 @@
-PanoramaSkyMaterial
-Sky
-StandardMaterial3D
